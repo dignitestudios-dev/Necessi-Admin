@@ -147,9 +147,9 @@ const PostCards = () => {
                   </p>
                 </div>
               </div>
-              <button className="text-gray-400 hover:text-gray-600">
+              {/* <button className="text-gray-400 hover:text-gray-600">
                 <span className="text-xl font-bold">...</span>
-              </button>
+              </button> */}
             </div>
 
             {/* Post Details */}
