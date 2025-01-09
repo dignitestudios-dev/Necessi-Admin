@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  FaExclamationTriangle,
-  FaUser,
-  FaRegMoneyBillAlt,
-  FaStar,
-  FaLocationArrow,
-  FaCalendarAlt,
-  FaThumbsUp,
-  FaCommentAlt,
-} from "react-icons/fa";
+import { FaExclamationTriangle, FaTimes, FaStar } from "react-icons/fa";
 
 // Static user and report details
 const user = {
@@ -85,7 +76,6 @@ const ReportedUserDetailPage = () => {
     alert(`User deactivated successfully for the reason: ${deactivationReason}`);
   };
 
-  // Static data already handled, now rendering the page
   return (
     <div className="p-6 h-full w-full overflow-auto">
       <h1 className="text-black text-3xl font-bold mb-6">Reported User Details</h1>
@@ -100,31 +90,24 @@ const ReportedUserDetailPage = () => {
               className="w-16 h-16 rounded-full border-2 border-[#074F57]"
             />
             <div>
-
-            
               <h2 className="text-xl font-semibold text-gray-800">{user.name}</h2>
-            
               <p className="text-sm text-gray-500">{user.status} • {user.email}</p>
-              <p className="text-sm text-gray-500 ">Wallet Balance ${user.walletBalance}</p>
-
+              <p className="text-sm text-gray-500">Wallet Balance ${user.walletBalance}</p>
             </div>
           </div>
         </div>
 
         <div className="space-y-6">
-        
           <div className="text-sm text-gray-700">
-            
             <p><strong>Reported By:</strong> {reportDetails.reportedBy}</p>
             <p><strong>Report Date:</strong> {reportDetails.reportDate}</p>
-            
           </div>
 
           <div className="text-sm text-gray-700">
             <p className="font-semibold">Reason for Report:</p>
             <p>{reportDetails.reportReason}</p>
           </div>
-          
+
           {/* Action Buttons */}
           <div className="flex space-x-4 mt-6">
             <button
@@ -133,38 +116,15 @@ const ReportedUserDetailPage = () => {
             >
               Deactivate User
             </button>
-            {/* <button
-              onClick={() => alert("Reported the user")}
-              className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700"
-            >
-              Report User
-            </button> */}
           </div>
         </div>
       </div>
 
-      {/* User Profile */}
+      {/* User Reviews Section */}
       <div className="bg-gray-50 border border-gray-200 rounded-lg shadow-md p-8 space-y-6 mt-8">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <img
-              src={user.avatar}
-              alt={user.name}
-              className="w-16 h-16 rounded-full border-2 border-[#074F57]"
-            />
-            <div>
-              <h2 className="text-xl font-semibold text-gray-800">{user.name}</h2>
-              <p className="text-sm text-gray-500">{user.email}</p>
-            </div>
-          </div>
-
-         
-        </div>
-
-        {/* Reviews */}
-        <div className="mt-4">
-          <h3 className="text-lg font-semibold text-gray-800">Reviews</h3>
-          {user.reviews.map((review) => (
+        <h3 className="text-2xl font-semibold text-gray-800">Reviews</h3>
+        {user.reviews.length > 0 ? (
+          user.reviews.map((review) => (
             <div key={review.id} className="flex items-center space-x-4 mt-4">
               <img
                 src={review.avatar}
@@ -175,31 +135,84 @@ const ReportedUserDetailPage = () => {
                 <p className="font-semibold text-gray-800">{review.reviewer}</p>
                 <p className="text-gray-600 text-sm">{review.comment}</p>
                 <div className="flex space-x-1 text-yellow-400 mt-2">
-                  {Array(review.rating).fill(null).map((_, i) => (
+                  {Array.from({ length: review.rating }).map((_, i) => (
                     <FaStar key={i} />
                   ))}
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          ))
+        ) : (
+          <p className="text-gray-500 text-sm">No reviews yet.</p>
+        )}
       </div>
 
-      {/* User Posts */}
-      {/* <div className="bg-gray-50 border border-gray-200 rounded-lg shadow-md p-8 space-y-6 mt-8">
-        <h3 className="text-lg font-semibold text-gray-800">User Posts</h3>
-        {user.posts.map((post) => (
-          <div key={post.id} className="p-4 border rounded-md bg-white shadow-lg mt-4">
-            <h4 className="text-lg font-semibold text-gray-800">{post.title}</h4>
-            <p className="text-sm text-gray-600">{post.content}</p>
-            <div className="flex items-center justify-between mt-4">
-              <button className="bg-[#074F57] text-white py-2 px-4 rounded-md hover:bg-[#0e3438]">
-                View Post
+      {/* Deactivation Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg relative">
+            {/* Modal Header */}
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-gray-800">Deactivate User</h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <FaTimes className="text-xl" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="space-y-4 mt-4">
+              <p className="text-sm text-gray-600">Please select a reason for deactivating the user.</p>
+
+              {/* Deactivation Reasons */}
+              <div className="space-y-2">
+                {deactivationReasons.map((reason, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="radio"
+                      id={reason}
+                      name="deactivationReason"
+                      value={reason}
+                      onChange={(e) => setDeactivationReason(e.target.value)}
+                      className="mr-2"
+                    />
+                    <label htmlFor={reason} className="text-sm text-gray-700">{reason}</label>
+                  </div>
+                ))}
+              </div>
+
+              {/* Other Reason Input */}
+              {deactivationReason === "Other" && (
+                <textarea
+                  value={deactivationReason}
+                  onChange={(e) => setDeactivationReason(e.target.value)}
+                  placeholder="Please specify other reason"
+                  className="w-full p-4 border border-gray-300 rounded-lg mt-4"
+                  rows={4}
+                />
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex justify-end space-x-4 mt-6">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-gray-500 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-600"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirmDeactivation}
+                className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700"
+              >
+                Confirm Deactivation
               </button>
             </div>
           </div>
-        ))}
-      </div> */}
+        </div>
+      )}
     </div>
   );
 };
