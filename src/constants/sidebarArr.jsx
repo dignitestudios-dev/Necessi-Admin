@@ -14,6 +14,7 @@ import { TbReportSearch } from "react-icons/tb";
 import { PiHandWithdrawBold } from "react-icons/pi";
 import { LuDollarSign } from "react-icons/lu";
 
+import { IoCartOutline } from "react-icons/io5";
 
 
 
@@ -29,63 +30,6 @@ export const sidebarArr = [
     url: "/dashboard",
     icon: <RxDashboard />,
   },
-//   {
-//     title: "Events",
-//     url: "/events",
-//     icon: <HiOutlineDocumentText />,
-//     submenu: [
-//       {
-//         title: "All Events",
-//         url: "/events",
-//         icon: <FiUsers />,
-//       },
-//       {
-//         title: "Create Event",
-//         url: "/create-event",
-//         icon: <RiNotificationLine />,
-//       },
-//     ],
-//   },
-//   {
-//     title: "Create Profile",
-//     url: "/create-profile",
-//     icon: <FiUser />,
-    
-//   },
-
-//   {
-//     title: "Appointments ",
-//     url: "/appointments",
-//     icon: <IoDocumentOutline />,
-//   },
-  
-
-//   {
-//     title: "Users",
-//     url: "/students",
-//     icon: <FiUsers />,
-//     submenu: [
-//       {
-//         title: "All Users",
-//         url: "/users",
-//         icon: <FiUsers />,
-//       },
-//       {
-//         title: "Students",
-//         url: "/students",
-//         icon: <FiUsers />,
-//       },
-//     =
-//       {
-//         title: "School Admins",
-//         url: "/admins",
-//         icon: <HiOutlineShieldExclamation />,
-//       },
-//     ],
-//   },
-
-
-
 
   {
     title: "Notifications",
@@ -122,6 +66,13 @@ export const sidebarArr = [
     title: "Revenue Management",
     url: "/revenue",
     icon: <LuDollarSign />,
+  },
+
+
+  {
+    title: "Orders Management",
+    url: "/orders",
+    icon: <IoCartOutline />,
   },
   // {
   //   title: "Terms Of Services",

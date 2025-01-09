@@ -10,6 +10,7 @@ import ReportedUserDetailsPage from "../pages/Reports/ReportedUserDetailsPage";
 import Withdrawals from "../pages/Withdrawals/Withdrawals";
 import RevenueManagement from "../components/Revenue/RevenueManagement";
 import WithdrawalDetails from "../pages/Withdrawals/WithdrawalDetails";
+import Orders from "../pages/Orders/Orders";
 
 export const normalRoutes = [
     {
@@ -72,6 +73,12 @@ export const normalRoutes = [
   title: "Revenue",
   url: "/revenue",
   page: <GlobalLayout page={<RevenueManagement />} />,
+},
+
+{
+  title: "Orders",
+  url: "/orders",
+  page: <GlobalLayout page={<Orders />} />,
 },
 
 ]    
