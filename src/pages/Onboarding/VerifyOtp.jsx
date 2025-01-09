@@ -2,10 +2,13 @@ import React, { useContext } from "react";
 import AuthSubmitBtn from "../../components/Onboarding/AuthSubmitBtn";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { BiArrowBack } from "react-icons/bi";
-import { LoginImage } from "../../assets/export";
+import { LoginImage, Logo } from "../../assets/export";
+import { useNavigate } from "react-router-dom";
 
 const VerifyOtp = () => {
-  const { navigate } = useContext(GlobalContext);
+
+  const navigate = useNavigate(); // Directly using useNavigate hook
+
   const arr = [1, 2, 3, 4];
   return (
     <div className="w-screen h-screen flex items-start justify-start bg-gray-50">
@@ -65,7 +68,7 @@ const VerifyOtp = () => {
           className="absolute inset-25 w-[60%] h-[60%]"
         /> */}
 
-         <div className="relative flex justify-center items-center h-full">
+      <div className="relative flex justify-center items-center h-full">
                           <img
                             src={LoginImage}
                             alt="login_mockup"
@@ -74,14 +77,15 @@ const VerifyOtp = () => {
                         </div>
 
         <div className="absolute bottom-10 text-[#074F57] text-center z-20">
-          <h3 className="text-[20px] font-medium">Verification</h3>
-          <p className="text-[16px] text-[#074F57]">
-          Verify your OTP to continue.
-          </p>
-
-          
+                          <div className="flex flex-col items-center space-y-2">
+                            <img src={Logo} alt="pill" className="w-[50px]" />
+                            <h3 className="text-lg font-medium">Verification</h3>
+                            <p className="text-sm">
+                              Verify your OTP to continue
+                            </p>
+                          </div>
+                        </div>
         </div>
-      </div>
     </div>
   );
 };

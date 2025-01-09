@@ -32,7 +32,7 @@ const UserDetails = ({ user }) => {
     };
   }
 
-  const totalSpent = user.transactions
+  const totalSpent  = user.transactions
     .filter((transaction) => transaction.amount < 0)
     .reduce((sum, transaction) => sum + transaction.amount, 0);
 
@@ -237,9 +237,9 @@ const UserDetails = ({ user }) => {
                   </button>
                 </div>
 
-                <button className="bg-[#074F57] text-white text-sm font-medium py-2 px-3 rounded-lg hover:bg-[#074F57]">
+                {/* <button className="bg-[#074F57] text-white text-sm font-medium py-2 px-3 rounded-lg hover:bg-[#074F57]">
                   View details
-                </button>
+                </button> */}
               </div>
             </div>
           ))}
@@ -253,14 +253,13 @@ const UserDetails = ({ user }) => {
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Confirm Deactivation</h2>
             <div className="space-y-4">
               <div className="flex items-center text-yellow-500">
-                <FaExclamationTriangle className="mr-2" />
                 <p className="text-sm text-gray-600">Please select a reason for deactivating this user:</p>
               </div>
 
               <select
                 value={deactivationReason}
                 onChange={(e) => setDeactivationReason(e.target.value)}
-                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#074F57]"
+                className="w-full text-black p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#074F57]"
               >
                 <option value="">Select a reason</option>
                 {deactivationReasons.map((reason, idx) => (
@@ -279,7 +278,7 @@ const UserDetails = ({ user }) => {
                 </button>
                 <button
                   onClick={handleConfirmDeactivation}
-                  className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
+                  className="bg-[#074F57] text-white py-2 px-4 rounded-md hover:bg-[#0c292d] transition duration-300"
                 >
                   Confirm
                 </button>

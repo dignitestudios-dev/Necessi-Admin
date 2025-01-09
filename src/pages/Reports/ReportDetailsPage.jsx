@@ -110,13 +110,13 @@ const ReportDetailsPage = () => {
             <div className="flex space-x-4">
               <button
                 onClick={() => handleActionClick("delete")}
-                className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700"
+                className="bg-[#074F57] text-white px-4 py-2 rounded-md text-sm hover:bg-[#10363a]"
               >
                 Delete Post
               </button>
               <button
                 onClick={() => handleActionClick("deactivate")}
-                className="bg-yellow-500 text-white px-4 py-2 rounded-md text-sm hover:bg-yellow-600"
+                className="bg-[#074F57] text-white px-4 py-2 rounded-md text-sm hover:bg-[#10363a]"
               >
                 Deactivate User
               </button>

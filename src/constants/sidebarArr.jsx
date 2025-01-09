@@ -12,6 +12,8 @@ import { BsFiletypePdf } from "react-icons/bs";
 import { CgFileDocument } from "react-icons/cg";
 import { TbReportSearch } from "react-icons/tb";
 import { PiHandWithdrawBold } from "react-icons/pi";
+import { LuDollarSign } from "react-icons/lu";
+
 
 
 
@@ -116,6 +118,11 @@ export const sidebarArr = [
     icon: <PiHandWithdrawBold />,
   },
 
+  {
+    title: "Revenue Management",
+    url: "/revenue",
+    icon: <LuDollarSign />,
+  },
   // {
   //   title: "Terms Of Services",
   //   url: "/termsofservice",

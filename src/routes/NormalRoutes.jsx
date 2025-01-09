@@ -7,8 +7,9 @@ import Posts from "../pages/Posts/Posts";
 import Reports from "../pages/Reports/Reports";
 import ReportDetailsPage from "../pages/Reports/ReportDetailsPage";
 import ReportedUserDetailsPage from "../pages/Reports/ReportedUserDetailsPage";
-import WithdrawalRequestTable from "../components/Withdrawals/WithdrawalRequestTable";
 import Withdrawals from "../pages/Withdrawals/Withdrawals";
+import RevenueManagement from "../components/Revenue/RevenueManagement";
+import WithdrawalDetails from "../pages/Withdrawals/WithdrawalDetails";
 
 export const normalRoutes = [
     {
@@ -59,6 +60,18 @@ export const normalRoutes = [
   title: "Withdrawal request table",
   url: "/withdrawals",
   page: <GlobalLayout page={<Withdrawals />} />,
+},
+
+{
+  title: "Withdrawal request table",
+  url: "/withdrawal-details/:id",
+  page: <GlobalLayout page={<WithdrawalDetails />} />,
+},
+
+{
+  title: "Revenue",
+  url: "/revenue",
+  page: <GlobalLayout page={<RevenueManagement />} />,
 },
 
 ]    

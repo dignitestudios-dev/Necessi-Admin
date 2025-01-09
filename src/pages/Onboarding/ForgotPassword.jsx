@@ -4,7 +4,7 @@ import AuthSubmitBtn from "../../components/Onboarding/AuthSubmitBtn";
 import { GlobalContext } from "../../contexts/GlobalContext";
 // import { FaApple, FaFacebookF, FaGoogle } from "react-icons/fa";
 import { BiArrowBack } from "react-icons/bi";
-import { LoginImage } from "../../assets/export";
+import { LoginImage, Logo } from "../../assets/export";
 
 
 const ForgotPassword = () => {
@@ -66,18 +66,16 @@ const ForgotPassword = () => {
                 </div>
 
         {/* Bottom Text */}
-        <div className="absolute bottom-10 text-[#074F57] text-center z-20">
-          <h3 className="text-[20px] font-medium">Forgot your password?</h3>
-          <p className="text-[16px] text-[#074F57]">
-          You can reset it easily.
-          </p>
-
-          {/* Pill Image centered below the text */}
-          {/* <div className="mt-2 flex justify-center">
-            <img src={Pill} alt="pill" />
-          </div> */}
-        </div>
-      </div>
+         <div className="absolute bottom-10 text-[#074F57] text-center z-20">
+                                  <div className="flex flex-col items-center space-y-2">
+                                    <img src={Logo} alt="pill" className="w-[50px]" />
+                                    <h3 className="text-lg font-medium">Forgot Password</h3>
+                                    <p className="text-sm">
+                                    Enter your email to reset your password
+                                    </p>
+                                  </div>
+                                </div>
+                </div>
    
     </div>
   );

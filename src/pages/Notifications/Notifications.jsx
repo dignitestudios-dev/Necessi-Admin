@@ -51,7 +51,7 @@ const Notifications = () => {
       {/* Create Notification Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-6 right-6 bg-[#074F57] text-white p-4 rounded-full shadow-lg hover:bg-black transition duration-300"
+        className="fixed bottom-6 right-6 bg-[#074F57] text-white p-4 rounded-full shadow-lg hover:bg-[#113b3f] transition duration-300"
       >
         <IoAddCircleOutline className="text-3xl" />
       </button>

@@ -15,9 +15,16 @@ const Login = () => {
         onSubmit={() => navigate("/dashboard", "Home")}
         className="w-full lg:w-1/2 h-full bg-white p-8 lg:p-20 flex flex-col justify-start items-start gap-8"
       >
-        <h1 className="text-left text-4xl font-bold text-black leading-[64.8px] tracking-[-1.2px]">
-          Log in
+        <h1 className="text-left text-4xl font-bold text-black ">
+          Log In
         </h1>
+        <div className="flex flex-col items-start space-y-2">
+    <img src={Logo} alt="pill" className="w-[50px]" />
+    <h3 className="text-lg font-medium">Necessi Admin</h3>
+    <p className="text-sm">
+      Login with your credentials to continue.
+    </p>
+  </div>
         <div className="flex flex-col w-full h-auto justify-start items-start gap-4">
           <AuthInput
             text={"Email"}

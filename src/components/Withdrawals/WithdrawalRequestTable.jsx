@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaEllipsisV, FaCheck, FaTimes } from "react-icons/fa";
+import { FaEllipsisV, FaCheck, FaTimes, FaRegEye } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 // Dummy Data for Withdrawal Requests
 const initialWithdrawals = [
@@ -40,46 +41,16 @@ const initialWithdrawals = [
 const WithdrawalRequestTable = () => {
   const [withdrawals, setWithdrawals] = useState(initialWithdrawals);
   const [activeTab, setActiveTab] = useState("Pending");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentRequest, setCurrentRequest] = useState(null);
-  const [rejectionReason, setRejectionReason] = useState("");
+  const navigate = useNavigate(); // hook for navigation
 
   // Filter requests based on the selected tab
   const filteredRequests = withdrawals.filter((request) =>
     activeTab === "All" ? true : request.status === activeTab
   );
 
-  // Handle approve action
-  const handleApprove = (requestId) => {
-    setWithdrawals((prevState) =>
-      prevState.map((request) =>
-        request.id === requestId ? { ...request, status: "Approved" } : request
-      )
-    );
-  };
-
-  // Handle reject action
-  const handleReject = (requestId) => {
-    if (!rejectionReason) {
-      alert("Please provide a reason for rejection.");
-      return;
-    }
-
-    setWithdrawals((prevState) =>
-      prevState.map((request) =>
-        request.id === requestId
-          ? { ...request, status: "Rejected", rejectionReason }
-          : request
-      )
-    );
-    setIsModalOpen(false);
-  };
-
-  // Open rejection modal
-  const openRejectionModal = (request) => {
-    setCurrentRequest(request);
-    setRejectionReason("");
-    setIsModalOpen(true);
+  // Navigate to withdrawal details page when eye icon is clicked
+  const handleViewDetails = (requestId) => {
+    navigate(`/withdrawal-details/${requestId}`); // Navigate to the specific detail page
   };
 
   return (
@@ -92,7 +63,7 @@ const WithdrawalRequestTable = () => {
       {/* Tabs */}
       <div className="mb-6">
         <div className="flex space-x-4">
-          {["All","Pending", "Approved", "Rejected"].map((tab) => (
+          {["All", "Pending", "Approved", "Rejected"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -149,60 +120,18 @@ const WithdrawalRequestTable = () => {
                   </span>
                 </td>
                 <td className="py-4 px-6 text-right">
-                  {request.status === "Pending" && (
-                    <div className="flex space-x-2 justify-end">
-                      <button
-                        onClick={() => handleApprove(request.id)}
-                        className="text-green-500 hover:text-green-700"
-                      >
-                        <FaCheck />
-                      </button>
-                      <button
-                        onClick={() => openRejectionModal(request)}
-                        className="text-red-500 hover:text-red-700"
-                      >
-                        <FaTimes />
-                      </button>
-                    </div>
-                  )}
+                  <div className="flex space-x-2 justify-end">
+                    <FaRegEye
+                      className="text-gray-500 hover:text-gray-700 cursor-pointer"
+                      onClick={() => handleViewDetails(request.id)} // Handle eye click event
+                    />
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
-      {/* Rejection Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-96">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Reject Withdrawal</h2>
-            <p className="text-sm text-gray-600 mb-4">
-              Please provide a reason for rejecting the withdrawal request.
-            </p>
-            <textarea
-              value={rejectionReason}
-              onChange={(e) => setRejectionReason(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md mb-4"
-              rows="4"
-            />
-            <div className="flex justify-between">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => handleReject(currentRequest.id)}
-                className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
-              >
-                Reject
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

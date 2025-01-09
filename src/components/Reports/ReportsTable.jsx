@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaEllipsisV } from "react-icons/fa";
+import { FaEllipsisV, FaRegEye } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 // Dummy User Data
 const initialUsers = [
@@ -42,13 +43,22 @@ const initialUsers = [
 ];
 
 const ReportsTable = () => {
+  const navigate = useNavigate(); // Initialize useNavigate hook
   const [users] = useState(initialUsers);
   const [filter, setFilter] = useState("All"); // Default filter
 
   // Filtered users based on the selected filter
-  const filteredUsers = users.filter((user) => 
+  const filteredUsers = users.filter((user) =>
     filter === "All" ? true : user.status === filter
   );
+
+  const handleViewClick = (status) => {
+    if (status === "User") {
+      navigate("/report-user-details");
+    } else if (status === "Post") {
+      navigate("/report-details");
+    }
+  };
 
   return (
     <div className="p-6 bg-gray-50 h-full w-full">
@@ -88,8 +98,7 @@ const ReportsTable = () => {
               <th className="py-4 px-6 text-left text-sm font-medium">Reported User</th>
               <th className="py-4 px-6 text-left text-sm font-medium">Report Type</th>
               <th className="py-4 px-6 text-left text-sm font-medium">Report Date</th>
-              <th className="py-4 px-6 text-left text-sm font-medium">Total Amount</th>
-              <th className="py-4 px-6 text-left text-sm font-medium">Status</th>
+              <th className="py-4 px-6 text-left text-sm font-medium">Report Type</th>
               <th className="py-4 px-6 text-right text-sm font-medium">Actions</th>
             </tr>
           </thead>
@@ -105,7 +114,6 @@ const ReportsTable = () => {
                 <td className="py-4 px-6 text-gray-800">{user.name}</td>
                 <td className="py-4 px-6 text-gray-800">{user.source}</td>
                 <td className="py-4 px-6 text-gray-800">{user.bookingDate}</td>
-                <td className="py-4 px-6 text-gray-800">{user.totalAmount}</td>
                 <td className="py-4 px-6">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -119,8 +127,11 @@ const ReportsTable = () => {
                     {user.status}
                   </span>
                 </td>
-                <td className="py-4 px-6 text-right">
-                  <FaEllipsisV className="text-gray-500 hover:text-gray-700 cursor-pointer" />
+                <td className="py-4 px-6 justify-items-end">
+                  <FaRegEye
+                    className="text-[#074F57] hover:text-[#0e2a2d] cursor-pointer"
+                    onClick={() => handleViewClick(user.status)} // Added onClick to navigate
+                  />
                 </td>
               </tr>
             ))}

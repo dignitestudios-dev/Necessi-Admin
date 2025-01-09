@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 import { PiTrashSimpleBold } from "react-icons/pi";
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook for navigation
+
 
 
 // Dummy User Data
@@ -42,6 +44,8 @@ const initialUsers = [
 const UserTable = () => {
   const [users, setUsers] = useState(initialUsers);
   const [statusFilter, setStatusFilter] = useState("All"); // "All", "Active", "Offline"
+  const navigate = useNavigate(); // Hook for navigation
+
 
   // Filter users based on selected status
   const filteredUsers =
@@ -56,7 +60,10 @@ const UserTable = () => {
   };
 
   const handleViewUser = (userId) => {
-    alert(`Viewing details for user ${userId}`); // Replace with actual view logic
+    // Navigate to the user details page using useNavigate
+    navigate(`/user-details/${userId}`);
+    navigate(`/user-details`);
+
   };
 
   return (

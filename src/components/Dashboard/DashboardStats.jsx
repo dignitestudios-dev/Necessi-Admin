@@ -25,7 +25,7 @@ const DashboardStats = () => {
       icon: <CgFileDocument className="text-[#074F57] text-2xl" />,
       change: "0% change from yesterday",
       bgColor: "#074F5720",
-      route: "/events",
+      route: "/posts",
     },
     {
       title: "Total Sales",
@@ -33,7 +33,7 @@ const DashboardStats = () => {
       icon: <CiMoneyCheck1 className="text-[#074F57] text-2xl" />,
       change: "0% change from yesterday",
       bgColor: "#074F5720",
-      route: "/appointments",
+      route: "/withdrawals",
     },
     {
       title: "Total Revenue",
@@ -41,7 +41,7 @@ const DashboardStats = () => {
       icon: <FiDollarSign className="text-[#074F57] text-2xl" />,
       change: "0% change from yesterday",
       bgColor: "#074F5720",
-      route: "/appointments",
+      route: "/revenue",
     },
   ];
 

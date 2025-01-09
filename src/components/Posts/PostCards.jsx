@@ -35,33 +35,33 @@ const initialPosts = [
   },
   {
     id: 3,
-    name: "Mia Lee",
-    avatar: "https://i.pravatar.cc/150?img=3",
-    budget: "$150",
-    duration: "N/A",
-    date: "20 Dec - 24 Dec 23",
-    location: "Chicago",
-    distance: "5 miles away",
+    name: "John Doe",
+    avatar: "https://i.pravatar.cc/150?img=8",
+    budget: "$200",
+    duration: "10:00 AM - 02:00 PM",
+    date: "5 Jan - 7 Jan 23",
+    location: "Los Angeles",
+    distance: "3 miles away",
     description:
-      "Selling a vintage sofa set, great condition, comes with cushions and covers.",
-    likes: 200,
-    bids: 4,
-    type: "item", // Item Post
+      "Looking for help assembling furniture in my new apartment. Basic tools provided. Must have a truck and be available this Saturday.",
+    likes: 412,
+    bids: 5,
+    type: "item", // Service Post
   },
   {
     id: 4,
-    name: "Mia Lee",
-    avatar: "https://i.pravatar.cc/150?img=3",
-    budget: "$150",
-    duration: "N/A",
-    date: "20 Dec - 24 Dec 23",
-    location: "Chicago",
-    distance: "5 miles away",
+    name: "John Doe",
+    avatar: "https://i.pravatar.cc/150?img=9",
+    budget: "$200",
+    duration: "10:00 AM - 02:00 PM",
+    date: "5 Jan - 7 Jan 23",
+    location: "Los Angeles",
+    distance: "3 miles away",
     description:
-      "Selling a vintage sofa set, great condition, comes with cushions and covers.",
-    likes: 200,
-    bids: 4,
-    type: "item", // Item Post
+      "Looking for help assembling furniture in my new apartment. Basic tools provided. Must have a truck and be available this Saturday.",
+    likes: 412,
+    bids: 5,
+    type: "item", // Service Post
   },
 ];
 
@@ -185,9 +185,9 @@ const PostCards = () => {
 
               {/* Action Buttons */}
               <div className="flex space-x-2">
-                <button className="bg-[#074F57] text-white px-4 py-2 rounded-md text-sm hover:bg-[#0f383b]">
+                {/* <button className="bg-[#074F57] text-white px-4 py-2 rounded-md text-sm hover:bg-[#0f383b]">
                   Bid Now
-                </button>
+                </button> */}
                 <button
                   onClick={() => handleViewDetails(post)}
                   className="bg-[#074F57] text-white px-4 py-2 rounded-md text-sm hover:bg-[#0f383b]"

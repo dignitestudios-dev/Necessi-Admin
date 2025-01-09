@@ -34,9 +34,9 @@ const user = {
     {
       id: 1,
       reviewer: "Jane Smith",
-      comment: "Great user! Very helpful and prompt!",
+      comment: "Very helpful and prompt!",
       rating: 5,
-      avatar: "https://i.pravatar.cc/150?img=2",
+      avatar: "https://i.pravatar.cc/150?img=8",
     },
     {
       id: 2,
@@ -100,37 +100,45 @@ const ReportedUserDetailPage = () => {
               className="w-16 h-16 rounded-full border-2 border-[#074F57]"
             />
             <div>
+
+            
               <h2 className="text-xl font-semibold text-gray-800">{user.name}</h2>
+            
               <p className="text-sm text-gray-500">{user.status} • {user.email}</p>
+              <p className="text-sm text-gray-500 ">Wallet Balance ${user.walletBalance}</p>
+
             </div>
           </div>
         </div>
 
         <div className="space-y-6">
+        
           <div className="text-sm text-gray-700">
+            
             <p><strong>Reported By:</strong> {reportDetails.reportedBy}</p>
             <p><strong>Report Date:</strong> {reportDetails.reportDate}</p>
+            
           </div>
 
           <div className="text-sm text-gray-700">
             <p className="font-semibold">Reason for Report:</p>
             <p>{reportDetails.reportReason}</p>
           </div>
-
+          
           {/* Action Buttons */}
           <div className="flex space-x-4 mt-6">
             <button
               onClick={handleDeactivate}
-              className="bg-yellow-500 text-white px-4 py-2 rounded-md text-sm hover:bg-yellow-600"
+              className="bg-[#074F57] text-white px-4 py-2 rounded-md text-sm hover:bg-[#0f3539]"
             >
               Deactivate User
             </button>
-            <button
+            {/* <button
               onClick={() => alert("Reported the user")}
               className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700"
             >
               Report User
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -150,13 +158,7 @@ const ReportedUserDetailPage = () => {
             </div>
           </div>
 
-          <div className="text-right">
-            <p className="text-sm text-gray-500 mt-2">Wallet Balance</p>
-            <div className="flex items-center justify-end space-x-2">
-              <FaRegMoneyBillAlt className="text-[#074F57]" />
-              <p className="text-lg font-semibold text-[#074F57]">${user.walletBalance}</p>
-            </div>
-          </div>
+         
         </div>
 
         {/* Reviews */}
@@ -170,7 +172,7 @@ const ReportedUserDetailPage = () => {
                 className="w-12 h-12 rounded-full border border-gray-300"
               />
               <div>
-                <p className="font-semibold">{review.reviewer}</p>
+                <p className="font-semibold text-gray-800">{review.reviewer}</p>
                 <p className="text-gray-600 text-sm">{review.comment}</p>
                 <div className="flex space-x-1 text-yellow-400 mt-2">
                   {Array(review.rating).fill(null).map((_, i) => (
@@ -184,7 +186,7 @@ const ReportedUserDetailPage = () => {
       </div>
 
       {/* User Posts */}
-      <div className="bg-gray-50 border border-gray-200 rounded-lg shadow-md p-8 space-y-6 mt-8">
+      {/* <div className="bg-gray-50 border border-gray-200 rounded-lg shadow-md p-8 space-y-6 mt-8">
         <h3 className="text-lg font-semibold text-gray-800">User Posts</h3>
         {user.posts.map((post) => (
           <div key={post.id} className="p-4 border rounded-md bg-white shadow-lg mt-4">
@@ -197,7 +199,7 @@ const ReportedUserDetailPage = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
