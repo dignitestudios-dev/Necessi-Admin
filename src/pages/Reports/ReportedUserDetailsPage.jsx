@@ -205,7 +205,7 @@ const ReportedUserDetailPage = () => {
               </button>
               <button
                 onClick={handleConfirmDeactivation}
-                className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700"
+                className="bg-[#074F57] text-white px-4 py-2 rounded-md text-sm hover:bg-[#0f3539]"
               >
                 Confirm Deactivation
               </button>
