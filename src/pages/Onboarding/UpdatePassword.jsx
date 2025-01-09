@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import AuthInput from "../../components/onboarding/AuthInput";
-import AuthSubmitBtn from "../../components/onboarding/AuthSubmitBtn";
-import { GlobalContext } from "../../contexts/GlobalContext";
+import AuthInput from "../../components/Onboarding/AuthInput";
+import AuthSubmitBtn from "../../components/Onboarding/AuthSubmitBtn";
+// import { GlobalContext } from "../../contexts/GlobalContext";
 import { BiArrowBack } from "react-icons/bi";
 import { LoginImage, Logo } from "../../assets/export";
 import { useNavigate } from "react-router-dom";
