@@ -145,7 +145,7 @@ const ReportDetailsPage = () => {
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               placeholder="Please provide a reason for deleting the post"
-              className="w-full p-2 border rounded-md mb-4"
+              className="w-full p-2 border text-black rounded-md mb-4"
             />
             <div className="flex space-x-4">
               <button
@@ -176,7 +176,7 @@ const ReportDetailsPage = () => {
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               placeholder="Please provide a reason for deactivating the user"
-              className="w-full p-2 border rounded-md mb-4"
+              className="w-full text-black p-2 border rounded-md mb-4"
             />
             <div className="flex space-x-4">
               <button
