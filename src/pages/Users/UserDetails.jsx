@@ -5,9 +5,8 @@ import {
   FaThumbsUp,
   FaCommentAlt,
   FaLocationArrow,
-  FaCalendarAlt,
-  FaExclamationTriangle,
 } from "react-icons/fa";
+import DeactivationModal from "../../components/Users/DeactivationModal";
 
 const UserDetails = ({ user }) => {
   if (!user) {
@@ -18,12 +17,12 @@ const UserDetails = ({ user }) => {
       avatar: "https://i.pravatar.cc/150?img=1",
       walletBalance: 120.5,
       posts: [
-        { id: 1, title: "Post Title 1", content: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet." },
-        { id: 2, title: "Post Title 2", content: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet." },
+        { id: 1, title: "Post Title 1", content: "Lorem ipsum dolor sit amet." },
+        { id: 2, title: "Post Title 2", content: "Lorem ipsum dolor sit amet." },
       ],
       reviews: [
-        { id: 1, reviewer: "Jane Smith", comment: "Great user! lorem ipsum dolar lorem ipsum lorem ipsum lorem lorem dollar dollar", rating: 5, avatar: "https://i.pravatar.cc/150?img=2" },
-        { id: 2, reviewer: "Bob Brown", comment: "Very cooperative. lorem ipsum dolar lorem ipsum lorem ipsum lorem lorem dollar dollar", rating: 4, avatar: "https://i.pravatar.cc/150?img=3" },
+        { id: 1, reviewer: "Jane Smith", comment: "Great user!", rating: 5, avatar: "https://i.pravatar.cc/150?img=2" },
+        { id: 2, reviewer: "Bob Brown", comment: "Very cooperative.", rating: 4, avatar: "https://i.pravatar.cc/150?img=3" },
       ],
       transactions: [
         { id: 1, date: "2024-01-05", amount: -20.0, description: "Purchased item A" },
@@ -32,7 +31,7 @@ const UserDetails = ({ user }) => {
     };
   }
 
-  const totalSpent  = user.transactions
+  const totalSpent = user.transactions
     .filter((transaction) => transaction.amount < 0)
     .reduce((sum, transaction) => sum + transaction.amount, 0);
 
@@ -41,29 +40,15 @@ const UserDetails = ({ user }) => {
     .reduce((sum, transaction) => sum + transaction.amount, 0);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [deactivationReason, setDeactivationReason] = useState("");
   const [isDeactivated, setIsDeactivated] = useState(false);
-
-  const deactivationReasons = [
-    "Violation of terms",
-    "Inactive for too long",
-    "Requested by the user",
-    "Other",
-  ];
 
   const handleDeactivate = () => {
     setIsModalOpen(true);
   };
 
-  const handleConfirmDeactivation = () => {
-    if (!deactivationReason) {
-      alert("Please select a reason for deactivation.");
-      return;
-    }
-
+  const handleConfirmDeactivation = (reason) => {
     setIsDeactivated(true);
-    setIsModalOpen(false);
-    alert(`User deactivated successfully for the reason: ${deactivationReason}`);
+    alert(`User deactivated successfully for the reason: ${reason}`);
   };
 
   return (
@@ -72,7 +57,6 @@ const UserDetails = ({ user }) => {
 
       {/* Profile Section */}
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Left Section - Profile and Info */}
         <div className="lg:w-1/3 w-full space-y-6">
           {/* Profile Card */}
           <div className="border border-gray-200 bg-gray-50 shadow-lg rounded-xl p-6">
@@ -114,8 +98,7 @@ const UserDetails = ({ user }) => {
               </div>
             </div>
 
-            {/* Deactivate Button */}
-            <div className="mt-6 text-right ">
+            <div className="mt-4 text-right">
               <button
                 onClick={handleDeactivate}
                 className="border border-[#074F57] bg-[#074F57] shadow transition-shadow text-white justify-start w-full  px-4 py-2 rounded-lg  duration-300 font-semibold hover:bg-[#0e3438]"
@@ -236,10 +219,6 @@ const UserDetails = ({ user }) => {
                     <span>24 bids</span>
                   </button>
                 </div>
-
-                {/* <button className="bg-[#074F57] text-white text-sm font-medium py-2 px-3 rounded-lg hover:bg-[#074F57]">
-                  View details
-                </button> */}
               </div>
             </div>
           ))}
@@ -247,46 +226,11 @@ const UserDetails = ({ user }) => {
       </div>
 
       {/* Deactivation Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 z-50 flex items-center justify-center transition-opacity">
-          <div className="bg-white p-6 rounded-xl w-96 shadow-lg">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Confirm Deactivation</h2>
-            <div className="space-y-4">
-              <div className="flex items-center text-yellow-500">
-                <p className="text-sm text-gray-600">Please select a reason for deactivating this user:</p>
-              </div>
-
-              <select
-                value={deactivationReason}
-                onChange={(e) => setDeactivationReason(e.target.value)}
-                className="w-full text-black p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#074F57]"
-              >
-                <option value="">Select a reason</option>
-                {deactivationReasons.map((reason, idx) => (
-                  <option key={idx} value={reason}>
-                    {reason}
-                  </option>
-                ))}
-              </select>
-
-              <div className="mt-4 flex justify-end space-x-4">
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 transition duration-300"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleConfirmDeactivation}
-                  className="bg-[#074F57] text-white py-2 px-4 rounded-md hover:bg-[#0c292d] transition duration-300"
-                >
-                  Confirm
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <DeactivationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmDeactivation}
+      />
     </div>
   );
 };

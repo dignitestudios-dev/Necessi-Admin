@@ -11,6 +11,7 @@ import Withdrawals from "../pages/Withdrawals/Withdrawals";
 import RevenueManagement from "../components/Revenue/RevenueManagement";
 import WithdrawalDetails from "../pages/Withdrawals/WithdrawalDetails";
 import Orders from "../pages/Orders/Orders";
+import Revenue from "../pages/Revenue/Revenue";
 
 export const normalRoutes = [
     {
@@ -72,7 +73,7 @@ export const normalRoutes = [
 {
   title: "Revenue",
   url: "/revenue",
-  page: <GlobalLayout page={<RevenueManagement />} />,
+  page: <GlobalLayout page={<Revenue />} />,
 },
 
 {
