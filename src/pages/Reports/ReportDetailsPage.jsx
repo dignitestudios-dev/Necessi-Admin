@@ -22,23 +22,32 @@ const post = {
 };
 
 const ReportDetailsPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isDeactivateModalOpen, setIsDeactivateModalOpen] = useState(false);
   const [action, setAction] = useState(null); // Action can be "delete" or "deactivate"
+  const [reason, setReason] = useState(""); // Reason for action (delete or deactivate)
 
   const handleActionClick = (actionType) => {
-    setAction(actionType); // Store the action
-    setIsModalOpen(true); // Open the modal to confirm action
+    setAction(actionType); // Store the action type (delete or deactivate)
+    if (actionType === "delete") {
+      setIsDeleteModalOpen(true);
+    } else if (actionType === "deactivate") {
+      setIsDeactivateModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal
-    setAction(null); 
+    setIsDeleteModalOpen(false);
+    setIsDeactivateModalOpen(false);
+    setReason(""); // Reset reason when closing the modal
+    setAction(null);
   };
 
   const handleConfirmAction = () => {
-    // Handle confirm action (delete or deactivate)
-    console.log(`${action} action confirmed for post: ${post.id}`);
-    handleCloseModal();
+    if (action) {
+      console.log(`${action} action confirmed for post: ${post.id}, Reason: ${reason}`);
+      handleCloseModal();
+    }
   };
 
   return (
@@ -125,12 +134,50 @@ const ReportDetailsPage = () => {
         </div>
       </div>
 
-      {isModalOpen && (
+      {/* Delete Modal */}
+      {isDeleteModalOpen && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
             <h3 className="text-lg font-medium text-gray-800 mb-4">
-              Are you sure you want to {action} this post?
+              Are you sure you want to delete this post?
             </h3>
+            <textarea
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              placeholder="Please provide a reason for deleting the post"
+              className="w-full p-2 border rounded-md mb-4"
+            />
+            <div className="flex space-x-4">
+              <button
+                onClick={handleConfirmAction}
+                className="bg-[#074F57] text-white px-4 py-2 rounded-md hover:bg-[#0f383b]"
+              >
+                Confirm
+              </button>
+              <button
+                onClick={handleCloseModal}
+                className="bg-gray-300 text-black px-4 py-2 rounded-md hover:bg-gray-400"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Deactivate Modal */}
+      {isDeactivateModalOpen && (
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
+            <h3 className="text-lg font-medium text-gray-800 mb-4">
+              Are you sure you want to deactivate this user?
+            </h3>
+            <textarea
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              placeholder="Please provide a reason for deactivating the user"
+              className="w-full p-2 border rounded-md mb-4"
+            />
             <div className="flex space-x-4">
               <button
                 onClick={handleConfirmAction}
