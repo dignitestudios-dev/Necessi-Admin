@@ -6,7 +6,7 @@ import { LoginImage } from "../../assets/export";
 import { Logo } from "../../assets/export";
 import { useFormik } from "formik";
 import { signInSchema } from "../../schema/signInSchema";
-import { loginValues } from "../../data/Authentication";
+import { loginValues } from "../../data/authentication";
 import { ErrorToast, SuccessToast } from "../../components/Toaster/Toast";
 import axios from "../../axios";
 import { AuthContext } from "../../contexts/AuthContext";

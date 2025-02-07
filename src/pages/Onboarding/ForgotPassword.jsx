@@ -6,7 +6,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import { BiArrowBack } from "react-icons/bi";
 import { LoginImage, Logo } from "../../assets/export";
 import { useFormik } from "formik";
-import { forgotEmail } from "../../data/Authentication";
+import { forgotEmail } from "../../data/authentication";
 import { forgotSchema } from "../../schema/signInSchema";
 import axios from "../../axios";
 import { ErrorToast, SuccessToast } from "../../components/Toaster/Toast";

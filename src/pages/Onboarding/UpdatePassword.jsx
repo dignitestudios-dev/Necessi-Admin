@@ -5,7 +5,7 @@ import AuthSubmitBtn from "../../components/Onboarding/AuthSubmitBtn";
 import { BiArrowBack } from "react-icons/bi";
 import { LoginImage, Logo } from "../../assets/export";
 import { useNavigate } from "react-router-dom";
-import { updatePassword } from "../../data/Authentication";
+import { updatePassword } from "../../data/authentication";
 import { updatePassSchema } from "../../schema/signInSchema";
 import { useFormik } from "formik";
 import { ErrorToast, SuccessToast } from "../../components/Toaster/Toast";
