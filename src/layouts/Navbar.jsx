@@ -7,7 +7,6 @@ import { GlobalContext } from "../contexts/GlobalContext";
 
 const Navbar = () => {
   const { navigate } = useContext(GlobalContext);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <div className="w-full h-[60px] bg-gray-50  border-b border-gray-300 flex justify-end items-center px-4 relative">

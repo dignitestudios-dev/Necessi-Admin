@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Logo } from "../../src/assets/export"; // Assuming Logo is an image component
 import { sidebarArr } from "../constants/sidebarArr"; // Import your sidebarArr
 import { RiLogoutCircleLine, RiMenuLine, RiCloseLine } from "react-icons/ri";
@@ -8,11 +8,15 @@ import { AuthContext } from "../contexts/AuthContext";
 const Sidebar = () => {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
+
+  const { pathname } = useLocation();
+  let currentLoc = pathname.split("/");
+
   // State for controlling the drawer visibility
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // State for tracking the active link
-  const [activeLink, setActiveLink] = useState(null);
+  const [activeLink, setActiveLink] = useState("/dashboard");
 
   // Toggle Drawer (Mobile)
   const toggleDrawer = () => {
@@ -33,6 +37,16 @@ const Sidebar = () => {
     logout();
     navigate("/");
   };
+
+  useEffect(() => {
+    if (
+      currentLoc[1] !== "user-details" &&
+      currentLoc[1] !== "report-details" &&
+      currentLoc[1] !== "withdrawal-details"
+    ) {
+      setActiveLink("/" + currentLoc[1]);
+    }
+  }, [currentLoc]);
 
   return (
     <div>

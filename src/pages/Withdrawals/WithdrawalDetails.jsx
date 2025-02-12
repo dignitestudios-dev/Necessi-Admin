@@ -38,6 +38,10 @@ const WithdrawalDetails = () => {
   // Handle approve action
   const handleApprove = async () => {
     try {
+      if (withdrawalData?.amount < 1) {
+        ErrorToast("Withdrawal amount must be greater than 0");
+        return;
+      }
       setApproveLoading(true);
       const response = await axios.get(`/admin/withdrawals/${id}/approve`);
       if (response.status === 200) {

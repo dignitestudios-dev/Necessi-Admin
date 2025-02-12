@@ -3,26 +3,13 @@ import { RxDashboard } from "react-icons/rx";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { FiUser } from "react-icons/fi";
 import { RiNotificationLine } from "react-icons/ri";
-import { HiOutlineExclamationCircle } from "react-icons/hi";
-import { BsExclamationSquare } from "react-icons/bs";
-import { HiOutlineShieldExclamation } from "react-icons/hi2";
 import { FiUsers } from "react-icons/fi";
-import { IoDocumentOutline } from "react-icons/io5";
-import { BsFiletypePdf } from "react-icons/bs";
 import { CgFileDocument } from "react-icons/cg";
 import { TbReportSearch } from "react-icons/tb";
 import { PiHandWithdrawBold } from "react-icons/pi";
 import { LuDollarSign } from "react-icons/lu";
 
 import { IoCartOutline } from "react-icons/io5";
-
-
-
-
-
-
-
-
 
 export const sidebarArr = [
   {
@@ -36,7 +23,6 @@ export const sidebarArr = [
     url: "/notifications",
     icon: <RiNotificationLine />,
   },
-
 
   {
     title: "User Management",
@@ -68,7 +54,6 @@ export const sidebarArr = [
     icon: <LuDollarSign />,
   },
 
-
   {
     title: "Orders Management",
     url: "/orders",
@@ -84,7 +69,4 @@ export const sidebarArr = [
   //   url: "/privacy-policy",
   //   icon: <HiOutlineExclamationCircle />,
   // },
- 
-
-  
 ];

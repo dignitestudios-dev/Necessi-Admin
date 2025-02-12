@@ -6,7 +6,7 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => localStorage.getItem("token"));
   const [name, setName] = useState(localStorage.getItem("name"));
   // const [email, setEmail] = useState(localStorage.getItem("email"));
-  //   const [uid, setUid] = useState(localStorage.getItem('uid'))
+  // const [uid, setUid] = useState(localStorage.getItem('uid'))
 
   const login = (data) => {
     if (data) {
