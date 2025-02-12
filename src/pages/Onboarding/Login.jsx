@@ -38,6 +38,8 @@ const Login = () => {
           console.error("🚀 ~ onSubmit: ~ err:", err);
           ErrorToast(err.response.data.message);
           setLoading(false);
+        } finally {
+          setLoading(false);
         }
       },
     });

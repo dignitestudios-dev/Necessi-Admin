@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const baseUrl = "http://3.129.5.190/api";
+// export const baseUrl = "http://3.129.5.190/api";
+export const baseUrl = "https://necessi.erdumadnan.com/api";
 
 const instance = axios.create({
   baseURL: baseUrl,
@@ -25,7 +26,7 @@ instance.interceptors.response.use(
   function (error) {
     // *For unAuthorized
     if (error.response.status === 401) {
-      sessionStorage.clear();
+      localStorage.clear();
       window.location.href = "/";
     }
     return Promise.reject(error);
