@@ -37,7 +37,6 @@ const ReportsTable = ({
       const response = await axios.get("/admin/reports-pdf", {
         responseType: "arraybuffer",
       });
-      console.log("🚀 ~ handlePdf ~ response:", response);
 
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);

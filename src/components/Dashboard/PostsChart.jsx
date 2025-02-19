@@ -135,6 +135,10 @@ const PostsChart = ({ newData }) => {
               x: {
                 grid: { display: false },
                 title: { display: true, text: "Post Count" },
+                ticks: {
+                  beginAtZero: true,
+                  precision: 0, // Ensure that the ticks are only integers
+                },
               },
               y: {
                 grid: { display: false },

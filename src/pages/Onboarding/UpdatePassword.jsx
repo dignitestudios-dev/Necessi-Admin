@@ -29,7 +29,6 @@ const UpdatePassword = () => {
       validateOnChange: true,
       validateOnBlur: true,
       onSubmit: async (values) => {
-        console.log("Form Submitted", values);
         // e.preventDefault();
 
         setLoading(true);

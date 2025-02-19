@@ -31,7 +31,7 @@ const UserTable = ({
       ? usersData?.all_users
       : statusFilter === "active_users"
       ? usersData?.active_users
-      : usersData?.offline_users;
+      : usersData?.deactive_users;
 
   const handleViewUser = (userId, imgUrl) => {
     navigate(`/user-details/${userId}`, { state: { imgUrl } });
@@ -103,7 +103,7 @@ const UserTable = ({
                 : "bg-gray-100 text-gray-700"
             } px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#074F57] hover:text-white transition`}
           >
-            Offline
+            Inactive
           </button>
         </div>
       </div>

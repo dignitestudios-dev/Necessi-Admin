@@ -3,7 +3,6 @@ import { FaHeart, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import DeleteConfirmationModal from "./DeleteConfirmationModal"; // Import the delete modal
 
 const PostDetailModal = ({ post, onClose, onDeletePost, selectImage }) => {
-  console.log("🚀 ~ PostDetailModal ~ post:", post);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [postId, setPostId] = useState("");
 

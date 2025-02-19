@@ -2,11 +2,6 @@ import React from "react";
 import { FaDollarSign } from "react-icons/fa";
 
 const TransactionModal = ({ selectedTransaction, closeModal }) => {
-  console.log(
-    "🚀 ~ TransactionModal ~ selectedTransaction:",
-    selectedTransaction
-  );
-
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">

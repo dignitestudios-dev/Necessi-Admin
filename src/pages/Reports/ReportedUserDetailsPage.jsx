@@ -61,7 +61,6 @@ const ReportedUserDetailPage = () => {
       const url = await getUserUrl(
         reportData?.reported_user?.avatar?.replace(/%2F/g, "/")
       );
-      console.log("🚀 ~ fetchImageUrls ~ url:", url);
 
       setUserImage(url);
     };
@@ -84,7 +83,6 @@ const ReportedUserDetailPage = () => {
     const fetchImageUrls = async () => {
       const urls = {};
       for (const user of reportData?.reported_user?.reviews?.data) {
-        console.log("🚀 ~ fetchImageUrls ~ user:", user);
         const url = await getImageUrl(user.avatar.replace(/%2F/g, "/"));
         urls[user.id] = url;
       }

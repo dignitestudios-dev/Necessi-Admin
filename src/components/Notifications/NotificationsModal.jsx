@@ -16,7 +16,6 @@ const NotificationsModal = ({ isOpen, onClose, getAllNotifications }) => {
       const response = await axios.post("/admin/notifications", {
         ...newNotification,
       });
-      console.log("🚀 ~ postNotification ~ response:", response);
       if (response.status === 200) {
         SuccessToast("Notification sent");
         onClose();

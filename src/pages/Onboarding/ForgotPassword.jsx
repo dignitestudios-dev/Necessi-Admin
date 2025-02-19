@@ -22,7 +22,6 @@ const ForgotPassword = () => {
       validateOnChange: true,
       validateOnBlur: true,
       onSubmit: async (values) => {
-        console.log("Form Submitted", values);
         sessionStorage.setItem("email", values?.email);
 
         try {

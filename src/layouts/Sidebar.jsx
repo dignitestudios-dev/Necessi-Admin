@@ -79,17 +79,11 @@ const Sidebar = () => {
                 key={index}
                 className="w-full flex justify-start items-center gap-3 "
               >
-                <span
-                  className={`w-2 h-3 rounded-r-full ${
-                    activeLink === link.url
-                      ? "bg-[#074F57]"
-                      : "bg-[#074F5730] border border-[#074F57]"
-                  } `}
-                ></span>
+                <span className={`w-0  `}></span>
                 <Link
                   to={link.url}
                   onClick={() => handleLinkClick(link.url)} // Set active on click
-                  className={`flex items-end w-[calc(100%-1.9rem)] gap-2 px-8 py-3 rounded-full transition-all  relative ${
+                  className={`flex items-end w-[calc(100%-1.4rem)] gap-2 px-8 py-3 rounded-full transition-all  relative ${
                     activeLink === link.url
                       ? "bg-[#074F57] text-white" // Active background color
                       : "bg-[#074F5730] border border-[#074F57] text-[#074F57] hover:bg-[#074F57] hover:text-white" // Hover background color
