@@ -102,9 +102,7 @@ const Sidebar = () => {
 
         {/* Footer */}
         <div className="pt-2 w-full group flex justify-start items-center gap-3">
-          <span
-            className={`w-2 h-3 rounded-r-full group-hover:bg-[#074F57] hover:text-white bg-[#074F5730] border border-[#074F57] `}
-          ></span>
+          <span className={`w-0 `}></span>
           <button
             onClick={() => handleLogout(logout)}
             className="flex items-center gap-3 px-6 py-3 bg-[#074F5730] border border-[#074F57] text-[#074F57] hover:bg-[#074F57] hover:text-white rounded-full transition-all w-[calc(100%-1.9rem)]  "
